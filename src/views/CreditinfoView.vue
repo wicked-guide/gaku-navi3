@@ -25,16 +25,16 @@ export default {
   data() {
     return {
       credit: [
-        { type: "キャラボイス", names: ["voicevox"] },
+        { type: "キャラボイス", names: ["VOICEVOX"] },
         {
           type: "画像",
           names: [
             "icon-rainbow",
             "illust8",
-            "イラストAC",
             "Stable diffusion",
             "PAKUTASO",
             "Topecon Heroes",
+            "イラストAC",
             "イラストパーク",
             "いらすとや",
             "パブリックドメインQ",

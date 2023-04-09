@@ -1,21 +1,34 @@
 <template>
   <div class="home">
-    <HeaderNav></HeaderNav>
-    <!-- <header>
+    <!-- <HeaderNav></HeaderNav> -->
+    <header class="flex-b">
       <div><router-link to="/" class="logo">がくなび</router-link></div>
-    </header> -->
+      <!-- 検索 -->
+      <input type="search" v-model="search" class="search" placeholder="検索" />
+      <div></div>
+    </header>
     <section class="overflow">
       <main>
-        <!-- 検索 -->
-        <input type="search" class="search" />
-        course:{{ course }}
         <!-- コース一覧 -->
         <section class="grid">
-          <router-lin to="/" class="card" v-for="item in 5" :key="item">
-            <div>im-ge</div>
-            <div class="tag">たぐ</div>
-            <div class="title">たいとる</div>
-            <div class="date">yyyy/mm/dd</div>
+          <router-lin
+            to="/"
+            class="card"
+            v-for="item in searchCourse"
+            :key="item.id"
+          >
+            <img
+              :src="require('@/assets/thumbnail/' + item.id + '.png')"
+              alt="thumbnail"
+            />
+            <div class="tag">
+              <span v-for="(tag, index) in item.tag" :key="index">
+                {{ tag }}
+              </span>
+            </div>
+
+            <div class="title">{{ item.name }}</div>
+            <div class="date">{{ item.date }}</div>
           </router-lin>
         </section>
       </main>
@@ -32,13 +45,13 @@
 </template>
 
 <script>
-import HeaderNav from "@/components/HeaderNav.vue";
+// import HeaderNav from "@/components/HeaderNav.vue";
 
 export default {
   name: "HomeView",
-  components: {
-    HeaderNav,
-  },
+  // components: {
+  //   HeaderNav,
+  // },
   data() {
     return {
       course: [],
@@ -46,9 +59,21 @@ export default {
       games: [],
     };
   },
-  mounted() {
-    const coursejson = "@/assets/course.json";
-    console.log(coursejson);
+
+  async mounted() {
+    // const data = await fetch("~@/assets/course.json");
+    const data = await fetch("../course.json");
+    const json = await data.json();
+    this.course = json;
+    console.log(this.course[0]);
+  },
+
+  computed: {
+    searchCourse() {
+      return this.course.filter((e) => {
+        return e.name.includes(this.search) || e.tag.includes(this.search);
+      });
+    },
   },
 };
 </script>
@@ -78,7 +103,7 @@ main {
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
 }
 .card {
@@ -88,6 +113,8 @@ main {
   cursor: pointer;
   transition: 0.5s;
   border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -95,16 +122,38 @@ main {
   background-color: white;
   box-shadow: 3px 3px 5px;
 }
-.title {
+.card img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.card .title {
   padding: 0.5rem;
   font-size: x-large;
 }
+.card .tag {
+  margin: 0.2rem;
+}
+.card .tag span {
+  margin-left: 0.3rem;
+  padding: 0.2rem;
+  font-size: small;
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 5px;
+}
+.card .date {
+  margin-top: auto;
+  padding: 0 1rem 0.5rem;
+  text-align: end;
+}
+
 footer {
   margin-top: auto;
   padding: 1rem;
   font-size: large;
   font-weight: bold;
   color: white;
+  background-color: #00000077;
 }
 a {
   color: white;

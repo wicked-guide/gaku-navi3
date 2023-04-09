@@ -9,6 +9,7 @@
 <style>
 :root {
   --main-color: #39666c;
+  --main-color-a: #39666c55;
   --sub-color: rgb(253, 117, 76);
   --back-color: rgb(255, 252, 240);
 }
@@ -40,11 +41,14 @@ nav a.router-link-exact-active {
   color: #42b983;
 } */
 a {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   text-decoration: auto;
+  transition: 0.5s;
 }
 a:hover {
   text-decoration: revert;
-  background: #00000077;
+  background-color: #00000077;
 }
 /* ヘルパー */
 .flex {
