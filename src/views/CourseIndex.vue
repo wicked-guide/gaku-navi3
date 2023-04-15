@@ -17,8 +17,14 @@
         <!-- チャプター -->
         <ol>
           <li v-for="(chapter, index) in part.chapter" :key="index">
-            <router-link v-if="chapter.href != '#'" to="/">
-              {{ chapter.title }}
+            <router-link
+              v-if="chapter.href != '#'"
+              :to="{
+                name: 'lecture',
+                params: { course: course, id: chapter.href },
+              }"
+            >
+              {{ chapter.title }}: {{ chapter.href }}
             </router-link>
             <div v-else class="making">
               <span>制作中</span>

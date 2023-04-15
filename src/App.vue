@@ -68,6 +68,10 @@ a:hover {
   display: flex;
   flex-direction: column;
 }
+.mlauto {
+  margin-left: auto;
+}
+/* コンポーネント */
 input {
   caret-color: var(--main-color);
 }
