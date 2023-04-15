@@ -1,18 +1,28 @@
 <template>
   <div class="home">
-    <!-- <HeaderNav></HeaderNav> -->
     <header class="flex-b">
-      <div><router-link to="/" class="logo">がくなび</router-link></div>
+      <!-- ロゴ -->
+      <router-link to="/" class="logo">がくなび</router-link>
       <!-- 検索 -->
-      <input type="search" v-model="search" class="search" placeholder="検索" />
+      <div>
+        <input
+          type="search"
+          v-model="search"
+          class="search"
+          placeholder="検索"
+        />
+      </div>
+
       <div></div>
     </header>
+
+    <!-- メイン -->
     <section class="overflow">
       <main>
         <!-- コース一覧 -->
         <section class="grid">
-          <router-lin
-            to="/"
+          <router-link
+            :to="{ name: 'course', params: { course: item.id } }"
             class="card"
             v-for="item in searchCourse"
             :key="item.id"
@@ -29,14 +39,14 @@
 
             <div class="title">{{ item.name }}</div>
             <div class="date">{{ item.date }}</div>
-          </router-lin>
+          </router-link>
         </section>
       </main>
 
       <footer>
         <div class="flex-a">
           <div></div>
-          <div><router-link to="/credit">お借りした素材</router-link></div>
+          <router-link to="/credit">お借りした素材</router-link>
         </div>
         <div class="flex-c">witsip</div>
       </footer>
@@ -45,13 +55,9 @@
 </template>
 
 <script>
-// import HeaderNav from "@/components/HeaderNav.vue";
-
 export default {
   name: "HomeView",
-  // components: {
-  //   HeaderNav,
-  // },
+
   data() {
     return {
       course: [],
@@ -61,11 +67,9 @@ export default {
   },
 
   async mounted() {
-    // const data = await fetch("~@/assets/course.json");
     const data = await fetch("../course.json");
     const json = await data.json();
     this.course = json;
-    console.log(this.course[0]);
   },
 
   computed: {
@@ -85,6 +89,15 @@ export default {
   display: flex;
   flex-direction: column;
 }
+header {
+  padding: 0.5rem 1rem;
+  align-items: baseline;
+}
+.logo {
+  font-size: xx-large;
+  font-weight: bold;
+  color: white;
+}
 .overflow {
   overflow: auto;
   height: 100vh;
@@ -95,8 +108,7 @@ main {
   padding: 0.5rem 1rem;
 }
 .search {
-  margin-bottom: 0.5rem;
-  padding: 0.2rem;
+  padding: 0.3rem;
   font-size: larger;
   border: solid 1px var(--main-color);
   border-radius: 5px;
@@ -109,7 +121,6 @@ main {
 .card {
   color: white;
   background-color: #00000077;
-  /* background-color: white; */
   cursor: pointer;
   transition: 0.5s;
   border-radius: 0.5rem;

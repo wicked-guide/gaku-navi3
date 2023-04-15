@@ -6,6 +6,13 @@ const routes = [
     name: "home",
     component: () => import("../views/HomeView.vue"),
   },
+  // もくじ
+  {
+    path: "/:course",
+    name: "course",
+    component: () => import("../views/CourseIndex.vue"),
+  },
+  // クレジット
   {
     path: "/credit",
     name: "credit",

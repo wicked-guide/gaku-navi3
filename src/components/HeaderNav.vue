@@ -13,8 +13,10 @@ export default {
 <style>
 header {
   padding: 0.5rem 1rem;
+  display: flex;
 }
 .logo {
+  padding: 0.5rem;
   font-size: xx-large;
   font-weight: bold;
   color: white;

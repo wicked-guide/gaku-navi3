@@ -1,0 +1,40 @@
+[
+  {
+    "part": "プロローグ",
+    "chapter": [
+      { "title": "オリエンテーション", "href": "01" },
+      { "title": "中学数学のゴール", "href": "02" }
+    ]
+  },
+  {
+    "part": "文字と式",
+    "chapter": [
+      { "title": "正の数・負の数", "href": "03" },
+      { "title": "平方根", "href": "#" },
+      { "title": "文字を用いた式", "href": "#" },
+      { "title": "因数分解", "href": "#" },
+      { "title": "方程式", "href": "#" }
+    ]
+  },
+  {
+    "part": "図形",
+    "chapter": [
+      { "title": "平面図形", "href": "#" },
+      { "title": "空間図形", "href": "#" },
+      { "title": "合同", "href": "#" },
+      { "title": "相似", "href": "#" },
+      { "title": "円周角", "href": "#" },
+      { "title": "三平方の定理", "href": "#" }
+    ]
+  },
+  {
+    "part": "データの活用",
+    "chapter": [
+      { "title": "関数とグラフ", "href": "#" },
+      { "title": "度数の分布", "href": "#" },
+      { "title": "合同", "href": "#" },
+      { "title": "確率", "href": "#" },
+      { "title": "標本調査", "href": "#" }
+    ]
+  }
+]

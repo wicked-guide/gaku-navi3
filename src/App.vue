@@ -1,8 +1,4 @@
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav> -->
   <router-view />
 </template>
 
@@ -12,6 +8,7 @@
   --main-color-a: #39666c55;
   --sub-color: rgb(253, 117, 76);
   --back-color: rgb(255, 252, 240);
+  --back-color-a: #00000077;
 }
 body {
   height: 100vh;
@@ -20,6 +17,7 @@ body {
   background-image: url("@/assets/background/school.jpg");
   background-position: center;
   background-size: cover;
+  caret-color: transparent;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -41,7 +39,7 @@ nav a.router-link-exact-active {
   color: #42b983;
 } */
 a {
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   border-radius: 0.5rem;
   text-decoration: auto;
   transition: 0.5s;
@@ -69,5 +67,8 @@ a:hover {
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+input {
+  caret-color: var(--main-color);
 }
 </style>
