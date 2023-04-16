@@ -1,8 +1,6 @@
 <template>
   <HeaderNav></HeaderNav>
   <section class="wapper">
-    <!-- <h1>{{ course }}</h1> -->
-
     <!-- サムネイル -->
     <img
       :src="require('@/assets/thumbnail/' + course + '.png')"
@@ -39,6 +37,7 @@
 
 <script>
 import HeaderNav from "@/components/HeaderNav.vue";
+import axios from "axios";
 
 export default {
   name: "CourseIndex",
@@ -51,11 +50,16 @@ export default {
       courseIndex: [],
     };
   },
-  async mounted() {
+  mounted() {
     const url = "../" + this.course + "/index.json";
-    const data = await fetch(url);
-    const json = await data.json();
-    this.courseIndex = json;
+
+    axios
+      .get(url)
+      .then((response) => (this.courseIndex = response.data))
+      .catch((error) => {
+        console.log("制作中です", error);
+        this.courseIndex = [{ part: "制作中" }];
+      });
   },
 };
 </script>

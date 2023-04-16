@@ -9,6 +9,8 @@
   --sub-color: rgb(253, 117, 76);
   --back-color: rgb(255, 252, 240);
   --back-color-a: #00000077;
+  --dark: #000000aa;
+  --disable: #7e7e7e77;
 }
 body {
   height: 100vh;
@@ -39,7 +41,6 @@ nav a.router-link-exact-active {
   color: #42b983;
 } */
 a {
-  /* padding: 0.5rem; */
   border-radius: 0.5rem;
   text-decoration: auto;
   transition: 0.5s;
@@ -49,6 +50,9 @@ a:hover {
   background-color: #00000077;
 }
 /* ヘルパー */
+.w100 {
+  width: 100%;
+}
 .flex {
   display: flex;
 }
@@ -70,6 +74,9 @@ a:hover {
 }
 .mlauto {
   margin-left: auto;
+}
+.nowrap {
+  white-space: nowrap;
 }
 /* コンポーネント */
 input {
